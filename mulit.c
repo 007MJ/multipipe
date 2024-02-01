@@ -70,6 +70,7 @@ void	append(t_cmd ** head, int data, int **fds, char **cmds)
 	current->next = node;
 }
 
+// programme pour multi pipe
 int main(int ac, char **av, char *envp[])
 {
 	pid_t pids;
