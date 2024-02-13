@@ -1,5 +1,18 @@
 #include "pipes.h"
 
+void close_pipes(t_cmd *current, int nb)
+{
+    int     i;
+
+    i = 0;
+
+    while ( i < nb)
+    {
+        close(current->pipes[i][0]);
+        close(current->pipes[i][1]);
+        i++;
+    }
+}
 int	**init_pipes(int nb)
 {
 	int **p = malloc(sizeof(int **) * nb);
@@ -20,22 +33,16 @@ void only_first_pipe(t_cmd *current)
 
 void    change_pipe(t_cmd *current)
 {
-    if (current->index % 2 == 0)
+
+    if (current->index == 0)
+        only_first_pipe(current);
+    if (current->index > 0)
     {
-        if (current->index == 0)
-            only_first_pipe(current);
-        else  
-        {
-            dup2(current->pipes[current->index - 1][1], 1);
-            close(current->pipes[current->index - 1][1]);
-            close(current->pipes[current->index - 1][0]);
-        }
-    }
-    else if (current->index > 0)
-    {
-        dup2(current->pipes[current->index - 1][0], 0);
-        close(current->pipes[current->index - 1][0]);
-        close(current->pipes[current->index - 1][1]);
+        if (current->next != NULL)
+            dup2(current->pipes[current->index][1], 1);
+        if (current->index != 0)
+            dup2(current->pipes[current->index - 1][0], 0); // A test cela function 
+        close_pipes(current, current->nb_pipes);
     }
 }
 
@@ -74,12 +81,6 @@ int   *array_child_ids(int nb_id)
         return (waitchild);
     }
     return (waitchild);
-}
-void close_pipes(t_cmd *current)
-{
-
-    close(current->pipes[current->index][0]);
-    close(current->pipes[current->index][1]);
 }
 void    main_process_wait_childs(pid_t *id, int nb)
 {
@@ -121,7 +122,7 @@ int   run_pipe(char **envp, t_cmd **cmds)
         }
         i++;
     }
-    close_pipes(*cmds);
+    close_pipes(*cmds, (*cmds)->nb_pipes);
     main_process_wait_childs(child_ids, (*cmds)->nb_pipes);
     return (1);
 }
@@ -133,12 +134,13 @@ t_cmd *new_node()
 	return (node);
 }
 
-void	append(t_cmd **head, int i, int **pipes, char **cmds, char *fcmd)
+void	append(t_cmd **head, int i, int **pipes, char **cmds, char *fcmd, int nb_pipes)
 {
 	t_cmd *node = new_node();
 
 	node->index = i;
 	node->pipes = pipes;
+	node->nb_pipes = nb_pipes;
 	node->cmds = cmds;
 	node->first_cmd = fcmd;
 	node->next = NULL;
@@ -157,6 +159,7 @@ int main(int ac, char **av, char **envp)
 {
     int i;
     int **pipes;
+    int     nb_pipe = 2;
 
     i = 0;
     pipes = init_pipes(2);
@@ -170,9 +173,9 @@ int main(int ac, char **av, char **envp)
         t_cmd **head = (t_cmd **)malloc(sizeof(t_cmd **));
         if (!head)
             return (printf("head did't malloc"), -1);
-        append(head, 0, pipes, one, "ls");
-        append(head, 1, pipes, two, "wc");
-        append(head, 2, pipes, three, "wc");
+        append(head, 0, pipes, one, "ls", nb_pipe);
+        append(head, 1, pipes, two, "wc", nb_pipe);
+        append(head, 2, pipes, three, "wc", nb_pipe);
         run_pipe(envp, head);
     }
     // printf("\n");
