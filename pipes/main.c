@@ -1,13 +1,16 @@
 #include "pipes.h"
 
+//quand tu ajouter un pipes augmenter le nombre nde pipes 
+
 int main(int ac, char **av, char **envp)
 {
-    int i;
-    int **pipes;
-    int     nb_pipe = 2;
+    int     i;
+    int     **pipes;
+    int     nb_pipe = 3;
 
-    i = 0;
+
     pipes = init_pipes(3);
+    i = 0;
     (void)av;
     (void)envp;
     t_cmd **head = (t_cmd **)malloc(sizeof(t_cmd **));
@@ -26,6 +29,5 @@ int main(int ac, char **av, char **envp)
         run_command(envp, head);
     }
     close_pipes(*head, (*head)->nb_pipes);
-    // printf("\n");
     return (0);
 }

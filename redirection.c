@@ -5,7 +5,6 @@
 // >> redirige le flux de sortie de la commande pour l’ajouter à la fin d’un fichier existant.
 
 //pour la programme printf > file
-
 int main(int ac, char **av)
 {
     if (ac == 2)
