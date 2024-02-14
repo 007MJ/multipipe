@@ -1,4 +1,4 @@
-#include "pipes.h"
+#include "../pipes.h"
 
 void	free_str(char **str)
 {
