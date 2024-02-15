@@ -5,30 +5,11 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "struct.h"
 
+#include <readline/readline.h>
+#include <readline/history.h>
 
-// global struct
-typedef struct s_glob
-{
-	char **envp;
-	int	**pipes;
-
-}t_glob;
-
-
-
-
-// struc cmd
-/// @brief index : iteration in the node, id : for child , pipes : for each node has pipes, cmds: cmd for node, first_cmd: cmd berfore space, nd_piped : numbers of pipe in argv;
-typedef struct  s_cmd {
-	int		index;
-	pid_t	id;
-	int		**pipes;
-	char	**cmds;
-	char	*first_cmd;
-	int		nb_pipes;
-	struct s_cmd *next;
-} t_cmd;
 
 // path
 char    *get_cmd_path(char *path, char *cmd);
@@ -54,4 +35,8 @@ void    wait_childs(pid_t *id, int nb);
 int		*array_child_ids(int nb_id);
 void	close_pipes(t_cmd *current, int nb);
 
+
+// parsing
+
+void	pars(t_glob *shell_kai);
 #endif
