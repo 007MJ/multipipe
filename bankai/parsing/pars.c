@@ -1,7 +1,15 @@
 #include "../include/prototype.h"
 
+
 void    pars(t_glob *shell_kai)
 {
-    (void)shell_kai;
-    printf("hello\n");
+    int i;
+
+    i = 0;
+    if (shell_kai->input)
+    {
+        while (shell_kai->input[i] == ' ')
+            i++;
+        
+    }
 }
