@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 t_cmd *new_node()
 {

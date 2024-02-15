@@ -1,4 +1,4 @@
-#include "pipes.h"
+#include "include/prototype.h"
 
 //quand tu ajouter un pipes augmenter le nombre nde pipes 
 

@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 int	**init_pipes(int nb)
 {

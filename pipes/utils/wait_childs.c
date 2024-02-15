@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 void    wait_childs(pid_t *id, int nb)
 {

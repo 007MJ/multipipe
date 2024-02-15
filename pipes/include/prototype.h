@@ -1,5 +1,5 @@
-#ifndef PIPES_H
-# define PIPES_H
+#ifndef PROTOTYPE_H
+# define PROTOTYPE_H
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -7,6 +7,18 @@
 #include <fcntl.h>
 
 
+// global struct
+typedef struct s_glob
+{
+	char **envp;
+	int	**pipes;
+
+}t_glob;
+
+
+
+
+// struc cmd
 /// @brief index : iteration in the node, id : for child , pipes : for each node has pipes, cmds: cmd for node, first_cmd: cmd berfore space, nd_piped : numbers of pipe in argv;
 typedef struct  s_cmd {
 	int		index;

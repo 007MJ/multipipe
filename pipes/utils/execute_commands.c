@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 int execute_commands(t_cmd *current, char **envp, char *envp_path)
 {

@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 static int	get_word_count(const char *s, char c)
 {

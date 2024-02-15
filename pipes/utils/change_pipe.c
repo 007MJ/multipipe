@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 void    change_pipe(t_cmd *current)
 {

@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 void	append(t_cmd **head, int i, int **pipes, char **cmds, char *fcmd, int nb_pipes)
 {

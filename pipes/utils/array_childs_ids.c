@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 int   *array_child_ids(int nb_id)
 {

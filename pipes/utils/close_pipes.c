@@ -1,4 +1,4 @@
-#include "../pipes.h"
+#include "../include/prototype.h"
 
 void close_pipes(t_cmd *current, int nb)
 {
