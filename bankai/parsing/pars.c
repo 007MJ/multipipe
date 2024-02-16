@@ -1,4 +1,4 @@
-#include "../include/prototype.h"
+#include "../include/includes.h"
 
 
 void    pars(t_glob *shell_kai)

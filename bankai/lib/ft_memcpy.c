@@ -1,4 +1,5 @@
-#include "../include/prototype.h"
+#include "../include/includes.h"
+
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

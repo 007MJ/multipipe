@@ -1,4 +1,5 @@
-#include "../include/prototype.h"
+#include "../include/includes.h"
+
 
 int   run_command(char **envp, t_cmd **cmds)
 {

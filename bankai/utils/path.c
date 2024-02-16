@@ -1,4 +1,5 @@
-#include "../include/prototype.h"
+#include "../include/includes.h"
+
 
 static char    *_without_path(char *s1, char *s2)
 {

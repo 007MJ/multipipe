@@ -1,4 +1,5 @@
-#include "../include/prototype.h"
+#include "../include/includes.h"
+
 
 static int	get_word_count(const char *s, char c)
 {

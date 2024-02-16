@@ -10,11 +10,19 @@ SRC      =  main.c \
 			parsing/pars.c
 
 
+INCLUDE_DIR = include 
+READLINE_ = readline-8.2
+
+READLINE_DIR = $(INCLUDE_DIR)/readline 
+
+LIBRD = $(READLINE_DIR)/bin/libreadline.a $(READLINE_DIR)/bin/libhistory.a
+LIBS = -lreadline -lcurses $(LIBRD)
+
 OBJSFILE = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJSFILE)
+$(NAME) : $(OBJSFILE) 
 	$(CC) $(CFLAGS) $(OBJSFILE) -o $(NAME)
 
 %.o : %.c
@@ -26,4 +34,4 @@ clean :
 fclean: clean
 	$(RM) $(NAME)
 
-re : fclean all
+re : fclean all 

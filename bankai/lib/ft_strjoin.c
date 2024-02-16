@@ -1,4 +1,5 @@
-#include "../include/prototype.h"
+#include "../include/includes.h"
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*res;

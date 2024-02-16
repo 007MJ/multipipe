@@ -1,14 +1,7 @@
-#ifndef PROTOTYPE_H
-# define PROTOTYPE_H
+#ifndef PROTOTYPES_H
+# define PROTOTYPES_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "struct.h"
 
-#include <readline/readline.h>
-#include <readline/history.h>
 
 
 // path

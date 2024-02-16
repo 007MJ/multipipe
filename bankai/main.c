@@ -1,4 +1,4 @@
-#include "include/prototype.h"
+#include "include/includes.h"
 
 // int main(int ac, char **av, char **envp)
 // {
@@ -30,29 +30,29 @@
 //     return (0);
 // }
 
-// void run(t_glob *shell_kai)
-// {
-//     shell_kai->on = 1;
-//     while(shell_kai)
-//     {
-//         shell_kai->input = readline("bankai >");
-//         // if (!shell_kai->input)
-//             // rl_on_new_line();
-//         if (shell_kai->input && *shell_kai->input)
-//         {
-//             add_history( shell_kai->input);
-//             if (ft_strncmp( shell_kai->input, "exit", ft_strlen("exit")) == 0)
-//             {
-//                 free( shell_kai->input);
-//                 rl_clear_history();
-//                 shell_kai->on = 0;
-//             }
-//             //parsing
-//             free( shell_kai->input);
-//         }
-//         rl_on_new_line();
-//     }
-// }
+void run(t_glob *shell_kai)
+{
+    shell_kai->on = 1;
+    while(shell_kai)
+    {
+        shell_kai->input = readline("bankai >");
+        // if (!shell_kai->input)
+            // rl_on_new_line();
+        if (shell_kai->input && *shell_kai->input)
+        {
+            add_history( shell_kai->input);
+            if (ft_strncmp( shell_kai->input, "exit", ft_strlen("exit")) == 0)
+            {
+                free( shell_kai->input);
+                rl_clear_history();
+                shell_kai->on = 0;
+            }
+            //parsing
+            free( shell_kai->input);
+        }
+        rl_on_new_line();
+    }
+}
 
 int main(int ac , char **av, char **envp)
 {
@@ -64,7 +64,7 @@ int main(int ac , char **av, char **envp)
         return (-1);
     shell_kai->envp = envp;
     shell_kai->input = av[1];
-    // run(shell_kai);
+    run(shell_kai);
     if (ac > 1)
         pars(shell_kai);
     else

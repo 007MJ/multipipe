@@ -1,4 +1,5 @@
-#include "../include/prototype.h"
+#include "../include/includes.h"
+
 
 void    wait_childs(pid_t *id, int nb)
 {
