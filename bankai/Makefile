@@ -1,6 +1,6 @@
 NAME     = bankai
 CC       = gcc
-CFLAGS    = -Wall -Werror -Wextra
+CFLAGS    = -Wall -Werror -Wextra -g
 
 RM       = rm -fr
 
@@ -11,22 +11,33 @@ SRC      =  main.c \
 
 
 INCLUDE_DIR = include 
-READLINE_ = readline-8.2
+READLINE = readline-8.2
 
-READLINE_DIR = $(INCLUDE_DIR)/readline 
+READLINE_DIR = include/readline 
 
-LIBRD = $(READLINE_DIR)/bin/libreadline.a $(READLINE_DIR)/bin/libhistory.a
+LIBRD = include/readline/bin/libreadline.a include/readline/bin/libhistory.a
 LIBS = -lreadline -lcurses $(LIBRD)
 
 OBJSFILE = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJSFILE) 
-	$(CC) $(CFLAGS) $(OBJSFILE) -o $(NAME)
+$(NAME) : $(LIBRD) $(OBJSFILE) 
+	$(CC) $(CFLAGS) $(OBJSFILE) -o $(NAME) $(LIBS)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -o $@ -c $^
+	$(CC) $(CFLAGS) -I include -o $@ -c $^
+
+
+$(LIBRD):
+	curl -O ftp://ftp.cwru.edu/pub/bash/readline-8.2.tar.gz
+	tar -zxvf readline-8.2.tar.gz
+	@rm -rf readline-8.2.tar.gz
+	@cd readline-8.2 && bash configure && make
+	@mkdir -p include/readline/bin
+	@mv ./readline-8.2/*.h include/readline
+	@mv ./readline-8.2/*.a include/readline/bin
+	@rm -rf readline-8.2
 
 clean :
 	$(RM) $(OBJSFILE)
