@@ -18,6 +18,8 @@ void    free_str(char **str);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 t_cmd	*new_node();
 void	append(t_cmd **head, int i, int **pipes, char **cmds, char *fcmd, int nb_pipes);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
 
 // utils
 int		run_command(char **envp, t_cmd **cmds);

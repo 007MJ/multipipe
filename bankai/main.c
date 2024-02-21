@@ -33,22 +33,23 @@
 void run(t_glob *shell_kai)
 {
     shell_kai->on = 1;
-    while(shell_kai)
+    while(shell_kai->on)
     {
-        shell_kai->input = readline("bankai >");
-        // if (!shell_kai->input)
-            // rl_on_new_line();
+        shell_kai->input = readline("shell_kai > ");
+        if (!shell_kai->input)
+            rl_on_new_line();
         if (shell_kai->input && *shell_kai->input)
         {
             add_history( shell_kai->input);
+            printf("--- %s -- \n", shell_kai->input);
             if (ft_strncmp( shell_kai->input, "exit", ft_strlen("exit")) == 0)
             {
-                free( shell_kai->input);
+                printf("%s\n", shell_kai->input);
                 rl_clear_history();
                 shell_kai->on = 0;
             }
-            //parsing
-            free( shell_kai->input);
+            pars(shell_kai);
+            free(shell_kai->input);
         }
         rl_on_new_line();
     }
@@ -59,16 +60,15 @@ int main(int ac , char **av, char **envp)
     // // (void)av;
     // // if (ac > 1)
     // //     return (printf("bankai : take no argv :"), -1);
+    if (ac > 1)
+        return (-1);
     t_glob *shell_kai = malloc(sizeof(t_glob) * 1);
     if (!shell_kai)
         return (-1);
     shell_kai->envp = envp;
     shell_kai->input = av[1];
     run(shell_kai);
-    if (ac > 1)
-        pars(shell_kai);
-    else
-        return  (-1);
+    free(shell_kai);
     return (0);
 }
 
