@@ -38,6 +38,7 @@ int number_av(t_glob *shell_kai)
     }
     return (count);
 }
+
 void    pars(t_glob *shell_kai)
 {
     int i;
@@ -53,9 +54,13 @@ void    pars(t_glob *shell_kai)
             {
                 i += cut(shell_kai, &shell_kai->input[i]);
             }
+            else if (shell_kai->input[i] == '|' || shell_kai->input[i] == '>' || shell_kai->input[i] == '<' || shell_kai->input[i] == '$')
+                i += manage_sign();
             else
-            ///
+            {
 
+            }
         }
     }
 }
+
