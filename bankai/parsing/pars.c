@@ -39,28 +39,29 @@ int number_av(t_glob *shell_kai)
     return (count);
 }
 
-void    pars(t_glob *shell_kai)
+char   **pars(t_glob *shell_kai)
 {
-    int i;
+    char    **av;
+    int     ac;
+    int     i;
+    int     j;
 
+    ac = number_av(t_glob *shell_kai);
+    j = 0;
     i = 0;
-    if (shell_kai->input)
+    av = ft_calloc(ac, sizeof(char **));
+    av[ac] = NULL;
+    while (shell_kai->input[i] == ' ')
+        i++;
+    while (shell_kai->input[i])
     {
-        while (shell_kai->input[i] == ' ')
-            i++;
-        while (shell_kai->input[i] != '\0')
-        {
-            if (shell_kai->input[i] != '\'' || shell_kai->input[i] != '\"')
-            {
-                i += cut(shell_kai, &shell_kai->input[i]);
-            }
-            else if (shell_kai->input[i] == '|' || shell_kai->input[i] == '>' || shell_kai->input[i] == '<' || shell_kai->input[i] == '$')
-                i += manage_sign();
-            else
-            {
-
-            }
-        }
+        if (shell_kai->input[i] == '|' || shell_kai->input[i] == '>' || shell_kai->input[i] == '<' || shell_kai->input[i] == '$')
+            i += manage_sign(av[j], shell_kai->input);
+        else if (shell_kai->nput[i] == '\'' || shell_kai->input[i] == '\"')
+            i += manage_sign(av[j], *shell_kai-input[i], shell_kai->input)
+        else
+            // sans quote 
+        j++;
     }
 }
 
