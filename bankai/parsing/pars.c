@@ -1,22 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 13:47:51 by mnshimiy          #+#    #+#             */
+/*   Updated: 2024/02/23 15:04:06 by mnshimiy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/includes.h"
 
 // quand il "" ou '' -> cela est comme un commande meme avec le space
 // s'il n'a pas la fin du quote le programme ne devrait pas marche 
-
-int cut(t_glob *shell_kai, char *s1)
-{
-    int i;
-
-    i = 0;
-    if (s1)
-    {
-        while (s1[i] != ' ')
-        {
-
-        }
-    }
-    return (i);
-}
 
 int number_av(t_glob *shell_kai)
 {
@@ -46,22 +43,24 @@ char   **pars(t_glob *shell_kai)
     int     i;
     int     j;
 
-    ac = number_av(t_glob *shell_kai);
+    ac = number_av(shell_kai);
     j = 0;
     i = 0;
     av = ft_calloc(ac, sizeof(char **));
     av[ac] = NULL;
-    while (shell_kai->input[i] == ' ')
+    while (shell_kai->input[i] == ' ' && shell_kai->input[i] != '\0')
         i++;
-    while (shell_kai->input[i])
+    while (shell_kai->input[i] != '\0')
     {
+
         if (shell_kai->input[i] == '|' || shell_kai->input[i] == '>' || shell_kai->input[i] == '<' || shell_kai->input[i] == '$')
-            i += manage_sign(av[j], shell_kai->input);
-        else if (shell_kai->nput[i] == '\'' || shell_kai->input[i] == '\"')
-            i += manage_sign(av[j], *shell_kai-input[i], shell_kai->input)
+            i += manage_sign(av[j], &shell_kai->input[i]);
+        if (shell_kai->input[i] == '\'' || shell_kai->input[i] == '\"')
+            i += manage_quote(av[j], shell_kai->input[i], &shell_kai->input[i]);
         else
-            // sans quote 
+            i += manage_words(av[j], &shell_kai->input[i]);
         j++;
     }
+    return (av);
 }
 

@@ -7,7 +7,7 @@ int is_quote(char *input, char quote)
 
     i = 0;
     is = 0;
-    while (input[i])
+    while (input[i] && input[i] != '\0')
     {
         if  (input[i] == quote && quote == 0)
             is++;
@@ -27,10 +27,10 @@ int manage_quote(char *s1, char quote, char *input)
 
     space = is_quote(input, quote);
     if (space == -1)
-        return (-1)
+        return (-1);
     s1 = ft_calloc(space, sizeof(char *));
     i = 0;
-    while (input[i]  && i < space)
+    while (input[i]  && i < space && input[i] != '\0')
     {
         s1[i] = input[i];
         i++;

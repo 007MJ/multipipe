@@ -41,7 +41,7 @@ void run(t_glob *shell_kai)
         if (shell_kai->input && *shell_kai->input)
         {
             add_history( shell_kai->input);
-            printf("--- %s -- \n", shell_kai->input);
+            printf("Run function -- %s -- \n", shell_kai->input);
             if (ft_strncmp( shell_kai->input, "exit", ft_strlen("exit")) == 0)
             {
                 printf("%s\n", shell_kai->input);

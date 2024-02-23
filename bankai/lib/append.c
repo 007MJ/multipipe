@@ -8,8 +8,8 @@ void	append(t_cmd **head, int i, int **pipes, char **cmds, char *fcmd, int nb_pi
 	node->index = i;
 	node->pipes = pipes;
 	node->nb_pipes = nb_pipes;
-	node->cmds = cmds;
-	node->first_cmd = fcmd;
+	node->av_cmd = cmds;
+	node->cmd_name = fcmd;
 	node->next = NULL;
 	if ((*head) == NULL)
 	{
