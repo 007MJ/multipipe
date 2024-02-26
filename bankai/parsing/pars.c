@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:47:51 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/02/23 15:04:06 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:00:48 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ char   **pars(t_glob *shell_kai)
     ac = number_av(shell_kai);
     j = 0;
     i = 0;
-    av = ft_calloc(ac, sizeof(char **));
-    av[ac] = NULL;
     while (shell_kai->input[i] == ' ' && shell_kai->input[i] != '\0')
         i++;
+    if(check_quote(&shell_kai->input[i]) == -1)
+        return (NULL);
+    av = ft_calloc(ac, sizeof(char **));
+    av[ac] = NULL;
     while (shell_kai->input[i] != '\0')
     {
-
         if (shell_kai->input[i] == '|' || shell_kai->input[i] == '>' || shell_kai->input[i] == '<' || shell_kai->input[i] == '$')
             i += manage_sign(av[j], &shell_kai->input[i]);
         if (shell_kai->input[i] == '\'' || shell_kai->input[i] == '\"')

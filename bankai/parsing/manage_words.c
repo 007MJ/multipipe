@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:47:55 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/02/23 14:57:33 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:36:36 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int space_words(char *input)
     int i;
 
     i = 0;
-    while (input[i] != ' ' && input[i] != '\0')
+    while (input[i] != ' ' && input[i] != '\0' && input[i] != '\"' && input[i] != '\"')
         i++;
     return (i);
 }
@@ -30,7 +30,7 @@ int  manage_words(char *s1, char *input)
     s1 = ft_calloc(space_words(input), sizeof(char *));
     if (s1)
     {
-        while (input[i] && input[i] != '\0' && input[i] != ' ')
+        while (input[i] && input[i] != '\0' && input[i] != ' ' && input[i] != '\"' && input[i] != '\"')
         {
             printf("while words :.. \n");
             s1[i] = input[i];
