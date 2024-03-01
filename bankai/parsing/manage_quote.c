@@ -40,25 +40,24 @@ char    *_remove_quote(char *s1)
     s2[j] = '\0';
     return (s2);
 }
-int manage_quote(char *s1, char quote, char *input)
+char    *manage_quote(int *i, char quote, char *input)
 {
-    int i;
+    char    *s1;
     int space;
 
     space = len_quote(input, quote);
     if (space == -1)
-        return (-1);
+        return (NULL);
     s1 = ft_calloc(space, sizeof(char *));
-    i = 0;
-    printf("[Manage quote ]Start -- pars -- %s  .....\n", input);
-    while (input[i]  && i <= space && input[i] != '\0')
+    // printf("[Manage quote ]Start -- pars -- %s  .....\n", input);
+    while (input[*i]  && *i <= space && input[*i] != '\0')
     {
-        printf("while quote %c :.. \n", s1[i]);
-        s1[i] = input[i];
-        i++;
+        // printf("while quote %c :.. \n", s1[i]);
+        s1[*i] = input[*i];
+        *i += 1;
     }
-    s1[i] = '\0';
+    s1[*i] = '\0';
     s1 = _remove_quote(s1);
-    printf("End pars -- [%s]-- \n", s1);
-    return (i);
+    // printf("End pars -- [%s]-- \n", s1);
+    return (s1);
 }

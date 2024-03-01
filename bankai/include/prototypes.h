@@ -34,8 +34,11 @@ void	close_pipes(t_cmd *current, int nb);
 // parsing
 
 char	**pars(t_glob *shell_kai);
-int     manage_sign(char *s1, char *input);
-int     manage_quote(char *s1, char quote, char *input);
-int     manage_words(char *s1, char *input);
+char    *manage_sign(int *i, char *input);
+char    *manage_quote(int *i, char quote, char *input);
+char    *manage_words(int *i, char *input);
 int     check_quote(char *input);
+
+// parsing/expan_pars
+void    make_cmd(t_glob *shell_kai);
 #endif

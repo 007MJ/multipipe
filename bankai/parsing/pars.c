@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:47:51 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/02/25 20:00:48 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/03/01 16:41:22 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,22 @@ char   **pars(t_glob *shell_kai)
         i++;
     if(check_quote(&shell_kai->input[i]) == -1)
         return (NULL);
-    av = ft_calloc(ac, sizeof(char **));
+    av = ft_calloc(ac + 1, sizeof(char **));
+    printf(" ac :: = %d\n", ac);
     av[ac] = NULL;
-    while (shell_kai->input[i] != '\0')
+    while (shell_kai->input[i] != '\0'  || j < ac)
     {
+        printf(" j = : %d\n", j);
         if (shell_kai->input[i] == '|' || shell_kai->input[i] == '>' || shell_kai->input[i] == '<' || shell_kai->input[i] == '$')
-            i += manage_sign(av[j], &shell_kai->input[i]);
+            av[j] = manage_sign(&i, &shell_kai->input[i]);
         if (shell_kai->input[i] == '\'' || shell_kai->input[i] == '\"')
-            i += manage_quote(av[j], shell_kai->input[i], &shell_kai->input[i]);
+          av[j] = manage_quote(&i, shell_kai->input[i], &shell_kai->input[i]);
         else
-            i += manage_words(av[j], &shell_kai->input[i]);
+           av[j] = manage_words(&i, &shell_kai->input[i]);
         j++;
     }
+    for (int i = 0; av[i] != NULL; i++)
+        printf(" pars : %s\n", av[i]);
     return (av);
 }
 
