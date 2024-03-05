@@ -15,10 +15,10 @@ int len_quote(char *input, char quote)
             return (i);
         i++;
     }
-    printf(" is %d\n", is);
+    // printf(" is %d\n", is);
     if (is % 2 == 0)
         return (i);
-    return (-1);
+    return (0);
 }
 
 char    *_remove_quote(char *s1)
@@ -40,24 +40,40 @@ char    *_remove_quote(char *s1)
     s2[j] = '\0';
     return (s2);
 }
-char    *manage_quote(int *i, char quote, char *input)
-{
-    char    *s1;
-    int space;
 
-    space = len_quote(input, quote);
-    if (space == -1)
-        return (NULL);
-    s1 = ft_calloc(space, sizeof(char *));
-    // printf("[Manage quote ]Start -- pars -- %s  .....\n", input);
-    while (input[*i]  && *i <= space && input[*i] != '\0')
+void    replace_pace(char *s, char c, int *i)
+{
+    int len;
+
+    len = 0;
+    len = (len_quote(s, c));
+    (void)i;
+    // printf("len q: %d\n",len_quote(s, c));
+    if (len > 1)
     {
-        // printf("while quote %c :.. \n", s1[i]);
-        s1[*i] = input[*i];
-        *i += 1;
+        while (len > *i)
+        {
+            if (s[*i] == ' ')
+                s[*i] = 30;
+            *i +=1;
+        }
     }
-    s1[*i] = '\0';
-    s1 = _remove_quote(s1);
-    // printf("End pars -- [%s]-- \n", s1);
-    return (s1);
+}
+
+void    manage_quote(char *input)
+{
+    int i;
+
+    i = 0;
+    if (input)
+    {
+        while (input[i] != '\0')
+        {
+            if (input[i] == '\"')
+                replace_pace(&input[i], '\"', &i);
+            if (input[i] == '\'')
+                 replace_pace(&input[i], '\'', &i);
+            i++;
+        }   
+    }
 }

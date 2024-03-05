@@ -35,7 +35,8 @@ void	close_pipes(t_cmd *current, int nb);
 
 char	**pars(t_glob *shell_kai);
 char    *manage_sign(int *i, char *input);
-char    *manage_quote(int *i, char quote, char *input);
+// char    *manage_quote(int *i, char quote, char *input);
+void    manage_quote(char *input);
 char    *manage_words(int *i, char *input);
 int     check_quote(char *input);
 
