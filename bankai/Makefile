@@ -7,8 +7,8 @@ RM       = rm -fr
 SRC      =  main.c \
 			lib/free_str.c lib/ft_memmove.c lib/ft_split.c lib/ft_strjoin.c lib/ft_strlen.c lib/ft_strncmp.c lib/ft_memcpy.c lib/new_node.c lib/append.c lib/ft_calloc.c lib/ft_bzero.c\
 			utils/path.c utils/close_pipes.c utils/run_command.c utils/init_pipes.c utils/execute_commands.c utils/change_pipe.c utils/wait_childs.c utils/array_childs_ids.c\
-			parsing/pars.c parsing/check_quote.c \
-			parsing/expan_pars/make_cmd.c \
+			parsing/pars.c parsing/check_quote.c parsing/remove_quote.c\
+			parsing/expan_pars/make_cmd.c parsing/expan_pars/type_of_cmd.c\
 			parsing/space/put_back_space.c parsing/space/replace_space.c
 
 

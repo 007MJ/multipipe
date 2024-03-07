@@ -36,10 +36,12 @@ void	close_pipes(t_cmd *current, int nb);
 char	**pars(t_glob *shell_kai);
 // char    *manage_sign(int *i, char *input);
 // char    *manage_words(int *i, char *input);
+void    remove_quote(char **s1);
 int     check_quote(char *input);
 
 // parsing/expan_pars
 void    make_cmd(t_glob *shell_kai);
+int     type_of_cmd(char *s);
 
 // parsing/space
 void    replace_space(char *s1);

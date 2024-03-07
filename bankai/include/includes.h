@@ -11,7 +11,7 @@
 #include "readline/readline.h"
 #include "readline/history.h"
 
-# define COMMANDE   0
+
 # define PIPE       1
 # define OUTPUT     2
 # define INPUT      3
