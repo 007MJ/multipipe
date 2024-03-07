@@ -1,4 +1,4 @@
-#include "../include/includes.h"
+#include "../../include/includes.h"
 
 int len_quote(char *input, char quote)
 {
@@ -41,13 +41,12 @@ char    *_remove_quote(char *s1)
     return (s2);
 }
 
-void    replace_pace(char *s, char c, int *i)
+void    replace(char *s, char c, int *i)
 {
     int len;
 
     len = 0;
     len = (len_quote(s, c));
-    (void)i;
     // printf("len q: %d\n",len_quote(s, c));
     if (len > 1)
     {
@@ -60,7 +59,7 @@ void    replace_pace(char *s, char c, int *i)
     }
 }
 
-void    manage_quote(char *input)
+void    replace_space(char *input)
 {
     int i;
 
@@ -70,10 +69,10 @@ void    manage_quote(char *input)
         while (input[i] != '\0')
         {
             if (input[i] == '\"')
-                replace_pace(&input[i], '\"', &i);
+                replace(&input[i], '\"', &i);
             if (input[i] == '\'')
-                 replace_pace(&input[i], '\'', &i);
+                replace(&input[i], '\'', &i);
             i++;
-        }   
+        }
     }
 }

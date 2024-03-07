@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:37:37 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/03/04 19:21:17 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/03/07 07:08:57 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,23 @@ int    type_of_cmd(char *s)
 {
     int len;
 
-    len = ft_stlen(s);
-    if (ft_strncmp(s , ">", (size_t)len) == 0)
-        return (OUTPUT);
-    if (ft_strncmp(s , "<", (size_t)len) == 0)
-        return (INPUT);
-    if (ft_strncmp(s , "$", (size_t)len) == 0)
-        return (DOLLAR);
-    if (ft_strncmp(s , "$", (size_t)len) == 0)
-        return (DOLLAR);
-    if (ft_strncmp(s, "|", (size_t)len) == 0)
-        return (PIPE);
-    if (ft_strncmp(s, ">>", (size_t)len) == 0)
-        return (APPEND);
-    if (ft_strncmp(s, "<<", (size_t)len) == 0)
-        return (HEREDOC);
-    return (-1);
+    len = ft_strlen(s);
+    if (len > 1)
+    {
+        if (ft_strncmp(s , ">", (size_t)len) == 0)
+            return (OUTPUT);
+        if (ft_strncmp(s , "<", (size_t)len) == 0)
+            return (INPUT);
+        if (ft_strncmp(s , "$", (size_t)len) == 0)
+            return (DOLLAR);
+        if (ft_strncmp(s, "|", (size_t)len) == 0)
+            return (PIPE);
+        if (ft_strncmp(s, ">>", (size_t)len) == 0)
+            return (APPEND);
+        if (ft_strncmp(s, "<<", (size_t)len) == 0)
+            return (HEREDOC);
+    }
+    return (ARVG);
 }
 
 void    make_cmd(t_glob *shell_kai)
@@ -45,7 +46,7 @@ void    make_cmd(t_glob *shell_kai)
     {
         while (av[i] != NULL)
         {
-            printf("make_cmds : %s\n", av[i]);
+            printf("make_cmds : %s Type cmd: %d \n", av[i], type_of_cmd(av[i]));
             // type de cmd 
             // malloc la node 
             // add cmd name and cmd av pipes 
