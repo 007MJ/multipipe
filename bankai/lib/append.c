@@ -1,16 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   append.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 14:00:58 by mnshimiy          #+#    #+#             */
+/*   Updated: 2024/03/08 14:00:59 by mnshimiy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/includes.h"
 
 
-void	append(t_cmd **head, int i, int **pipes, char **cmds, char *fcmd, int nb_pipes)
+void	append(t_cmd **head, t_cmd *node)
 {
-	t_cmd *node = new_node();
-
-	node->index = i;
-	node->pipes = pipes;
-	node->nb_pipes = nb_pipes;
-	node->av_cmd = cmds;
-	node->cmd_name = fcmd;
-	node->next = NULL;
 	if ((*head) == NULL)
 	{
 		*head = node;

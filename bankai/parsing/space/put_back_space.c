@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 06:17:46 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/03/07 07:05:31 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:17:51 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ char    *put_space(char *s)
         return (NULL);
     while (s[i])
     {
-        printf(" space : -- %c --\n", s1[i]);
+        // printf(" space : -- %c --\n", s1[i]);
         if (s[i] == 30)
         {
-            printf("30");
+            // printf("30");
             s1[i] = 32;
         }
         else

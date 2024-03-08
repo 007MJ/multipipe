@@ -16,8 +16,8 @@ size_t	 ft_strlen(const char *s);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 void    free_str(char **str);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
-t_cmd	*new_node();
-void	append(t_cmd **head, int i, int **pipes, char **cmds, char *fcmd, int nb_pipes);
+t_cmd	*new_cmd();
+void	append(t_cmd **head, t_cmd *cmd);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 
@@ -42,7 +42,8 @@ int     check_quote(char *input);
 // parsing/expan_pars
 void    make_cmd(t_glob *shell_kai);
 int     type_of_cmd(char *s);
-int     trie_cmd(t_cmd **cmd, char **av);
+int     trie_cmd(t_cmd **cmd, char *av);
+int     remove_first_quote(char *s, t_cmd **cmds);
 
 // parsing/space
 void    replace_space(char *s1);
