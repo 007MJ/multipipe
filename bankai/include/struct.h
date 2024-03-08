@@ -12,7 +12,7 @@ typedef struct s_glob
 	int		_return;
     int     on;
 
-	t_cmd	**cmd;
+	t_cmd	**cmds;
 }t_glob;
 
 

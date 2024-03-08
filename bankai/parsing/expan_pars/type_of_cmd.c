@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:53:15 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/03/07 17:24:46 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/03/07 23:07:04 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ int    type_of_cmd(char *s)
     
     s2 = NULL;
     len = ft_strlen(s);
-    printf(" commande %s ]\n", is_quote_remove(s, s2));
     return (ARVG);
 }

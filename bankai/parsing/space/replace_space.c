@@ -41,22 +41,18 @@ char    *_remove_quote(char *s1)
     return (s2);
 }
 
-void    replace(char *s, char c, int *i)
+int   replace(char *s, char c)
 {
-    int len;
+    int i;
 
-    len = 0;
-    len = (len_quote(s, c));
-    // printf("len q: %d\n",len_quote(s, c));
-    if (len > 1)
+    i = 1;
+    while (s[i] != '\0' && s[i] != c)
     {
-        while (len > *i)
-        {
-            if (s[*i] == ' ')
-                s[*i] = 30;
-            *i +=1;
-        }
+        if (s[i] == ' ')
+            s[i] = 30;
+        i += 1;
     }
+    return (i);
 }
 
 void    replace_space(char *input)
@@ -68,10 +64,8 @@ void    replace_space(char *input)
     {
         while (input[i] != '\0')
         {
-            if (input[i] == '\"')
-                replace(&input[i], '\"', &i);
-            if (input[i] == '\'')
-                replace(&input[i], '\'', &i);
+            if (input[i] == '\"' || input[i] == '\'')
+               i += replace(&input[i], input[i]);
             i++;
         }
     }
