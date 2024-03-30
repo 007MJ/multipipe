@@ -42,7 +42,7 @@ int     check_quote(char *input);
 // parsing/expan_pars
 void    make_cmd(t_glob *shell_kai);
 int     type_of_cmd(char *s);
-int     trie_cmd(t_cmd **cmd, char *av);
+t_cmd   *trie_cmd(char **av);
 int     remove_first_quote(char *s, t_cmd **cmds);
 
 // parsing/space

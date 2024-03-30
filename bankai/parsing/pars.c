@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:47:51 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/03/07 23:20:24 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:32:14 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char    **pars(t_glob *shell_kai)
     av = NULL;
     if (check_quote(shell_kai->input) == -1)
         return (NULL);
-    printf("%s\n", shell_kai->input);
+    // printf("%s\n", shell_kai->input);
     replace_space(shell_kai->input);
     av = ft_split(shell_kai->input, ' ');
     put_back_space(av);

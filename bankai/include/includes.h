@@ -17,7 +17,7 @@
 # define INPUT      3
 # define APPEND     4 
 # define DOLLAR     5
-# define ARVG       6
-# define HEREDOC       7 
+# define HEREDOC    6 
+# define ARVG       7
 
 #endif

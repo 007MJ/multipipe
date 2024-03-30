@@ -6,42 +6,145 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:56:21 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/03/08 16:14:16 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/03/30 04:13:35 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/includes.h"
 
-int is_quote(char *input)
+char **newav(char *av)
 {
-    int one_q;
-    int two_q;
+    char    **v;
+    int     i;
+    int     j;
+
+    j = 0;
+    i = 0;
+    v = malloc(sizeof(char *) * 2);
+    if (!v)
+        return (NULL);
+    v[i] =  malloc(sizeof(char *) * (ft_strlen(av) + 1));
+    while (av[j] != '\0')
+    {
+        v[i][j] = av[j];
+        j++;
+    }
+    v[i][j] = '\0';
+    v[i + 1] = NULL;
+    return (v);  
+}
+
+t_cmd *initcmd(char *name, char *av)
+{
+    t_cmd   *new;
+
+    new = malloc(sizeof(t_cmd) * 1);
+    if (!new)
+        return (NULL);
+    new->av_cmd = newav(av);
+    new->cmd_name = name;
+    new->id = 0;
+    new->type = type_of_cmd(name);
+    new->pipes = 0;
+    new->next = NULL;
+    return (new);
+}
+
+int sizecmds(char **cmds, char *n)
+{
     int i;
 
     i = 0;
-    one_q = 0;
-    two_q = 0;
-    while (input[i] && input[i] != '\0')
-    {
-        if (input[i] == '\'')
-            one_q++;
-        if (input[i] == '\"')
-            two_q++;
+    if (cmds)
+        while (cmds[i] != NULL)
+            i++;
+    if (n)
         i++;
-    }
-    if (one_q % 2 == 0 || two_q  % 2 == 0)
-        return (1);
-    return (-1);
+    return (i);
 }
 
-int trie_cmd(t_cmd **cmds, char *av)
+char *    allocatecpy( char *src)
 {
-    // tu dois faire en sorte   que seulement ceux qui on des quote sont prise en charge par la function
-    if (is_quote(av) == 1)
-        remove_first_quote(av, cmds);
-    (void)cmds;
-    // tu remove les first quote du mots et tu colle le mots si nécessaire
-    // si le mot est un sign tu regarde dépendamment c'est arguments
-    // si le mot contient que des signe tu va le split seulement s'il ne pas dans des quotes 
-    return (1);
+    // use ft_strdup();
+    int i;
+    char *new;
+
+    i = 0;
+    new = malloc(sizeof(char *) * ft_strlen(src) + 1);
+    if (!new)
+        return NULL;
+    while (src[i] != '\0')
+    {
+        new[i] = src[i];
+        i++;
+    }
+    new[i] = '\0';
+    return new;
+}
+
+void	ft_cpycmds(char **new, char **olds, const char *n)
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    if (olds)
+    {
+        while (olds[i] != NULL)
+        {
+            new[i] = allocatecpy(olds[i]);
+            i++;   
+        }
+        free(olds);
+    }
+    new[i] = allocatecpy((char *)n);
+}
+
+char **newcmds(char **olds, char *n)
+{
+    char **new;
+    int size;
+
+    size = sizecmds(olds, n);
+    new = malloc(sizeof(char *) * (size + 1));
+    new[size] = NULL;
+    if (!new)
+        return (NULL);
+    ft_cpycmds(new, olds, n);
+    return (new);
+}
+
+t_cmd *trie_cmd(char **av)
+{
+    t_cmd   *head;
+    t_cmd   *current;
+    int     i;
+
+    i = 0;
+    current = NULL;
+    head = NULL;
+    while (av[i] != NULL)
+    {
+        if (head == NULL){
+         printf("if 1\n");
+            head = initcmd(av[i], av[i]);
+            current = head;
+        }
+        else if (type_of_cmd(av[i]) <= 6){
+            printf("else if 2!\n");
+            while (current->next != NULL)
+            {
+                printf("...\n");
+                current = current->next;
+            }
+            current->next = initcmd(av[i], av[i]);
+            
+        }else{
+         printf("else 3\n");
+            current->av_cmd = newcmds(current->av_cmd, av[i]);
+        }
+        i++;
+    }
+    return (head);
 }

@@ -3,12 +3,15 @@
 
 int	**init_pipes(int nb)
 {
-	int **p = malloc(sizeof(int **) * nb);
+	int	**p;
+	int	i;
 
-	for (int i = 0; i < nb; i++)
+	i = 0;
+	p =  malloc(sizeof(int **) * nb);
+	while(i < nb)
 	{
-		p[i] = malloc(sizeof(int *) * 2); // should be a while 
-		pipe(p[i]);
+		p[i] = malloc(sizeof(int *) * 2); 
+		i++;
 	}
 	return (p);
 }

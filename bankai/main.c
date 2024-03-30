@@ -48,7 +48,6 @@ void run(t_glob *shell_kai)
                 rl_clear_history();
                 shell_kai->on = 0;
             }
-            // pars(shell_kai);
             make_cmd(shell_kai);
             free(shell_kai->input);
         }
@@ -58,9 +57,6 @@ void run(t_glob *shell_kai)
 
 int main(int ac , char **av, char **envp)
 {
-    // // (void)av;
-    // // if (ac > 1)
-    // //     return (printf("bankai : take no argv :"), -1);
     if (ac > 1)
         return (-1);
     t_glob *shell_kai = malloc(sizeof(t_glob) * 1);
@@ -72,5 +68,3 @@ int main(int ac , char **av, char **envp)
     free(shell_kai);
     return (0);
 }
-
-// le nom devrait etre minishell 

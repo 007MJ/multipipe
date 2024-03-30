@@ -1,6 +1,5 @@
 #include "../include/includes.h"
 
-
 int execute_commands(t_cmd *current, char **envp, char *envp_path)
 {
      char	*cmd_path;

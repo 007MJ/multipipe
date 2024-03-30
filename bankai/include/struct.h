@@ -12,14 +12,14 @@ typedef struct s_glob
 	int		_return;
     int     on;
 
-	t_cmd	**cmds;
+	t_cmd	*cmds;
 }t_glob;
 
 
 // struc cmd
 /// @brief index : iteration in the node, id : for child , pipes : for each node has pipes, cmds: cmd for node, first_cmd: cmd berfore space, nd_piped : numbers of pipe in argv;
 typedef struct  s_cmd {
-	int		index;
+	int		type;
 	pid_t	id;
 	int		**pipes;
 	char	**av_cmd;
