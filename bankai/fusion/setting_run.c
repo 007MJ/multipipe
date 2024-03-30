@@ -2,8 +2,9 @@
 
 void    setting_run(t_glob *shell_kai)
 {
+    // regarde les redirection de sortie avant de faire des action 
     // check is built 
-    // check redirection
+    // check redirection change le PIPE AVANT DE RUN COMMAND 
     // check pour PIPE OR CMD ELSE
-    run_command(shell_kai->envp, &shell_kai->cmds);
+    run_command(shell_kai->envp, shell_kai->cmds);
 }

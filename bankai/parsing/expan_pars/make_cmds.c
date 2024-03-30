@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_cmd.c                                         :+:      :+:    :+:   */
+/*   make_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:37:37 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/03/30 14:49:39 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/03/30 16:10:22 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    make_cmds(t_glob *shell_kai)
     if (av != NULL)
     {
         shell_kai->cmds = trie_cmd(av);
-        print_cmd(shell_kai->cmds);
+        print_cmd(*shell_kai->cmds);
         setting_run(shell_kai);
     }
     // free av
