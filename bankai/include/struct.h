@@ -3,6 +3,8 @@
 
 // global struct
 typedef struct s_cmd t_cmd; 
+typedef struct s_built t_built; 
+typedef struct s_built t_built; 
 
 typedef struct s_glob
 {
@@ -24,11 +26,22 @@ typedef struct  s_cmd {
 	int		**pipes;
 	char	**av_cmd;
 	char	*cmd_name;
+	int		index;
 	int		nb_pipes;
     
 	// should be a void next stuck
 	struct s_cmd *next;
 } t_cmd;
+
+
+typedef struct s_built
+{
+	int	type;
+	char **argv;
+
+} t_built;
+
+
 
 
 

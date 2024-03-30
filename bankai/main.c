@@ -48,7 +48,7 @@ void run(t_glob *shell_kai)
                 rl_clear_history();
                 shell_kai->on = 0;
             }
-            make_cmd(shell_kai);
+            make_cmds(shell_kai);
             free(shell_kai->input);
         }
         rl_on_new_line();

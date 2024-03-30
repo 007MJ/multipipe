@@ -40,12 +40,24 @@ void    remove_quote(char **s1);
 int     check_quote(char *input);
 
 // parsing/expan_pars
-void    make_cmd(t_glob *shell_kai);
+void    make_cmds(t_glob *shell_kai);
 int     type_of_cmd(char *s);
-t_cmd   *trie_cmd(char **av);
 int     remove_first_quote(char *s, t_cmd **cmds);
 
 // parsing/space
 void    replace_space(char *s1);
 void    put_back_space(char **s1);
+
+// fusion
+void    setting_run(t_glob *shell_kai);
+
+// parsing/expan_pars/trie_cmds
+t_cmd   *trie_cmd(char **av);
+char    **newcmds(char **olds, char *n);
+char    **newav(char *av);
+char    *allocatecpy(char *src);
+int     sizecmds(char **cmds, char *n);
+t_cmd   *initcmd(char *name, char *av);
+void    ft_cpycmds(char **new, char **olds, const char *n);
+
 #endif
