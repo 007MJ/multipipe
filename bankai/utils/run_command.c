@@ -11,7 +11,7 @@ int   run_command(char **envp, t_cmd **cmds)
     current = *cmds;
     envp_path = get_envp_path(envp);
     child_ids = array_child_ids(current->nb_pipes);
-    while (current != NULL)
+    while (current->next != NULL)
     {
         current->id = fork();
         child_ids[i] = current->id;

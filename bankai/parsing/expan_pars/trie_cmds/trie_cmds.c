@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:56:21 by mnshimiy          #+#    #+#             */
-/*   Updated: 2024/03/30 16:50:51 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:02:56 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    count_pipe(t_cmd **head, char **av)
             count++;
         i++;
     }
-    while (current != NULL){
+    while (current->next != NULL){
         current->nb_pipes = count;
         current->pipes = init_pipes(count);
         current = current->next;
@@ -52,23 +52,24 @@ t_cmd **trie_cmd(char **av)
         if (head == NULL){
             head = (t_cmd **)malloc(sizeof(t_cmd**));
             *head = initcmd(av[i], av[i]);
+            (*head)->index = index;
             current = *head;
-            current->index = index;
+            printf("if -> ::");
+            printf("current_cmd : %s and current->index %d :\n", current->cmd_name, current->index);
             index++;
         }
-        else if (type_of_cmd(av[i]) <= 6){
-            printf("else if 2!\n");
-            while (current->next != NULL)
-            {
-                printf("...\n");
-                current = current->next;
-            }
-            current->next = initcmd(av[i], av[i]);
+        else if (type_of_cmd(av[i]) == 1){
+            printf("else if 2! -> ::");
+            current = current->next;
+            i++;
+            current = initcmd(av[i], av[i]);
             current->index = index;
+            printf("current_cmd : %s and current->index %d :\n", current->cmd_name, current->index);
             index++;
             
         }else{
-         printf("else 3\n");
+         printf("else 3 -> ::");
+         printf("current_cmd : %s and current->index %d :\n", current->cmd_name, current->index);
             current->av_cmd = newcmds(current->av_cmd, av[i]);
         }
         i++;

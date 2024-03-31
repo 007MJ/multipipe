@@ -20,10 +20,10 @@
 //         // char *four[] = {"ls -l", NULL};
 //         if (!head)
 //             return (printf("head did't malloc"), -1);
-//         // append(head, 0, pipes, one, "ls", nb_pipe);
-//         // append(head, 1, pipes, two, "wc", nb_pipe);
-//         // append(head, 2, pipes, three, "wc", nb_pipe);
-//         // append(head, 3, pipes, four, "ls", nb_pipe);
+//         append(head, 0, pipes, one, "ls", nb_pipe);
+//         append(head, 1, pipes, two, "wc", nb_pipe);
+//         append(head, 2, pipes, three, "wc", nb_pipe);
+//         append(head, 3, pipes, four, "ls", nb_pipe);
 //         run_command(envp, head);
 //     }
 //     close_pipes(*head, (*head)->nb_pipes);

@@ -11,6 +11,7 @@ t_cmd *initcmd(char *name, char *av)
     new->cmd_name = name;
     new->id = 0;
     new->type = type_of_cmd(name);
+    new->index = 0;
     new->pipes = 0;
     new->next = NULL;
     return (new);
