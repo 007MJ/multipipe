@@ -10,7 +10,8 @@ int	**init_pipes(int nb)
 	p =  malloc(sizeof(int **) * nb);
 	while(i < nb)
 	{
-		p[i] = malloc(sizeof(int *) * 2); 
+		p[i] = malloc(sizeof(int *) * 2);
+		pipe(p[i]);
 		i++;
 	}
 	return (p);
