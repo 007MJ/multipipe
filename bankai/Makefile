@@ -5,13 +5,11 @@ CFLAGS    = -Wall -Werror -Wextra -g -fsanitize=address
 RM       = rm -fr
 
 SRC      =  main.c \
-			lib/free_str.c lib/ft_memmove.c lib/ft_split.c lib/ft_strjoin.c lib/ft_strlen.c lib/ft_strncmp.c lib/ft_memcpy.c lib/new_cmd.c lib/append.c lib/ft_calloc.c lib/ft_bzero.c\
-			utils/path.c utils/close_pipes.c utils/run_command.c utils/init_pipes.c utils/execute_commands.c utils/change_pipe.c utils/wait_childs.c utils/array_childs_ids.c\
+			lib/free_str.c lib/ft_memmove.c lib/ft_split.c lib/ft_strjoin.c lib/ft_strlen.c lib/ft_strncmp.c lib/ft_memcpy.c lib/new_cmd.c lib/append.c lib/ft_calloc.c lib/ft_bzero.c lib/ft_strdup.c\
+			pipes/path.c pipes/close_pipes.c pipes/run_command.c pipes/init_pipes.c pipes/execute_commands.c pipes/change_pipe.c pipes/wait_childs.c pipes/array_childs_ids.c\
 			parsing/pars.c parsing/check_quote.c parsing/remove_quote.c\
-			parsing/expan_pars/make_cmds.c parsing/expan_pars/type_of_cmd.c parsing/expan_pars/remove_first_quote.c\
+			parsing/expan_pars/type_of_cmd.c parsing/expan_pars/remove_first_quote.c\
 			parsing/space/put_back_space.c parsing/space/replace_space.c\
-			parsing/expan_pars/trie_cmds/trie_cmds.c parsing/expan_pars/trie_cmds/newcmds.c parsing/expan_pars/trie_cmds/newav.c parsing/expan_pars/trie_cmds/allocatecpy.c \
-			parsing/expan_pars/trie_cmds/sizecmds.c parsing/expan_pars/trie_cmds/initcmd.c parsing/expan_pars/trie_cmds/ft_cpycmds.c\
 			fusion/setting_run.c
 
 

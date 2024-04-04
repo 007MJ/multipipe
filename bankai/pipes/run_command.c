@@ -7,13 +7,15 @@ int   run_command(char **envp, t_cmd **cmds)
     pid_t   *child_ids;
 
     i = 0;
+    if (!cmds)
+        return (-1);
     t_cmd   *current;
     current = *cmds;
     envp_path = get_envp_path(envp);
     child_ids = array_child_ids(current->nb_pipes);
     while (current != NULL)
     {
-        printf("current->cmd_name %s :::::: \n", current->cmd_name);
+        // printf("current->cmd_name %s :::::: \n", current->cmd_name);
         current->id = fork();
         child_ids[i] = current->id;
         if (current->id == 0)
@@ -27,7 +29,7 @@ int   run_command(char **envp, t_cmd **cmds)
             current = current->next;
         i++;
     }
-    close_pipes(*cmds, (*cmds)->nb_pipes);
     wait_childs(child_ids, (*cmds)->nb_pipes);
+    close_pipes(*cmds, (*cmds)->nb_pipes);
     return (1);
 }

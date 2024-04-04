@@ -20,6 +20,7 @@ t_cmd	*new_cmd();
 void	append(t_cmd **head, t_cmd *cmd);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
+char    *ft_strdup(char *s);
 
 // utils
 int		run_command(char **envp, t_cmd **cmds);
@@ -54,10 +55,10 @@ void    setting_run(t_glob *shell_kai);
 // parsing/expan_pars/trie_cmds
 t_cmd   **trie_cmd(char **av);
 char    **newcmds(char **olds, char *n);
-char    **newav(char *av);
+char    **newav(char **av, int index);
 char    *allocatecpy(char *src);
 int     sizecmds(char **cmds, char *n);
-t_cmd   *initcmd(char *name, char *av);
+t_cmd   *initcmd(char **name, int i, int **fds);
 void    ft_cpycmds(char **new, char **olds, const char *n);
 
 #endif

@@ -31,6 +31,8 @@ char    *get_envp_path(char **envp)
 
 static char    *_check_absolute_path(char *cmd)
 {
+    if (!cmd)
+        return (NULL);
     if (cmd[0] == '/')
         if (access(cmd, F_OK) == 0)
             return (cmd);

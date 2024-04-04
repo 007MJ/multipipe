@@ -4,7 +4,7 @@
 // global struct
 typedef struct s_cmd t_cmd; 
 typedef struct s_built t_built; 
-typedef struct s_built t_built; 
+typedef struct s_files	t_files; 
 
 typedef struct s_glob
 {
@@ -15,6 +15,9 @@ typedef struct s_glob
     int     on;
 
 	t_cmd	**cmds;
+	t_built	**buily;
+	t_files **files;
+
 }t_glob;
 
 
@@ -38,11 +41,16 @@ typedef struct s_built
 {
 	int	type;
 	char **argv;
+	struct s_built *next;
 
 } t_built;
 
-
-
+typedef	struct	s_files 
+{
+	char	*name;
+	char	**agrv;
+	struct	s_file *next;
+}t_files;
 
 
 #endif

@@ -48,7 +48,6 @@ void run(t_glob *shell_kai)
                 rl_clear_history();
                 shell_kai->on = 0;
             }
-            make_cmds(shell_kai);
             free(shell_kai->input);
         }
         rl_on_new_line();
@@ -64,7 +63,7 @@ int main(int ac , char **av, char **envp)
         return (-1);
     shell_kai->envp = envp;
     shell_kai->input = av[1];
-    run(shell_kai);
+    // run(shell_kai);
     free(shell_kai);
     return (0);
 }
