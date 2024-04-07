@@ -1,0 +1,4 @@
+bankai/include/readline/
+*.o
+bankai/*.o
+other/*.o
