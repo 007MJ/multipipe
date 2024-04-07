@@ -14,6 +14,6 @@ datep=$(date)
 #========================= #
 
 
-git add *
-git commit -m $message + $datep
+git add .
+git commit -m "$message + $datep"
 git push
