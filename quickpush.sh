@@ -2,7 +2,7 @@
 
 
 # ======================== #
-#     get user input       #
+#     get user input 🔥    #
 #========================= #
 
 echo "What is the message of commit:"
