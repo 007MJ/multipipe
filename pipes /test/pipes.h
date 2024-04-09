@@ -52,6 +52,12 @@ void    wait_childs(pid_t *id, int nb_childs);
 char    *get_cmd_path(char *path, char *cmd);
 char    *get_envp_path(char **envp);
 
+// single command
+int    single_command(t_cmd *cmd, char **envp, char *envp_path);
+
+// commands 
+int    commands(t_glob *shell, char **envp, char *envp_path);
+
 
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
