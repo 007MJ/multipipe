@@ -15,7 +15,7 @@ int main(int ac, char **av)
             printf("Error file\n");
         else
         {
-            printf("Yes we can do it 😘");  
+            printf("Yes we can do it 🥭\n");  
         }
     }
     return (0);
