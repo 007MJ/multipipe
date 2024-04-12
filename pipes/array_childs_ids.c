@@ -1,5 +1,4 @@
 #include "test/pipes.h"
-#include "../unit/unit.h"
 
 int   *array_child_ids(int nb_id)
 {

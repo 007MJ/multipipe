@@ -10,7 +10,7 @@ int size(char **env)
             i++;
     return (i);
 }
-void free_str(char **str)
+void free_str_envp(char **str)
 {
     int i;
 
@@ -48,6 +48,6 @@ char **addEnvp(char **envp, char **vars)
         i++;
         j++;
     }
-    free_str(envp);
+    free_str_envp(envp);
     return (new);
 }

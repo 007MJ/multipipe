@@ -1,5 +1,4 @@
 #include "test/pipes.h"
-#include "../unit/unit.h"
 
 int _childs_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
 {
@@ -13,7 +12,7 @@ int _childs_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
     {
         last_fd ^= fd[0];
         fd[0] ^= last_fd;
-        last_fd ^= fd[0];./
+        last_fd ^= fd[0];
     }
     if (curr->index == shell->nb_cmds -1)
     {

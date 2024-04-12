@@ -1,5 +1,4 @@
 #include "test/pipes.h"
-#include "../unit/unit.h"
 
 int	**init_pipes(int nb)
 {

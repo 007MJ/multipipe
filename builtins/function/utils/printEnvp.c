@@ -1,7 +1,7 @@
 #include "../../test/include.h"
+#include "../../../unit/unit.h"
 
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp_envp(const char *s1, const char *s2, size_t n)
 {
 	size_t			i;
 
@@ -45,7 +45,7 @@ void ft_sort(char **envp)
         j = i + 1;
         while (envp[j] != NULL)
         {
-            if (ft_strncmp(envp[i], envp[j], ft_strlen(envp[j])) == 2)
+            if (ft_strncmp_envp(envp[i], envp[j],  ft_strlen_utils(envp[j])) == 2)
                 swap(&envp[i], &envp[j]);
             j++;
         }

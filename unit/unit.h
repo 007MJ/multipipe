@@ -93,6 +93,9 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 char    *ft_strdup(char *s);
 
-
+// buitins / function 
+ int	ft_strlen_utils(char *s);
+ char **addEnvp(char **envp, char **vars);
+ void    printEnvp(char **envp);
 
 #endif

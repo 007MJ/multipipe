@@ -1,5 +1,4 @@
 #include "test/pipes.h"
-#include "../unit/unit.h"
 
 static char    *_without_path(char *s1, char *s2)
 {

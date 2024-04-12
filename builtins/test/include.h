@@ -15,6 +15,6 @@ void ft_export(char **envp, char **argv, bool);
 // utils function 
 void printEnvp(char **envp);
 char **addEnvp(char **envp, char **argv);
-int ft_strlen(char *);
+int ft_strlen_utils(char *);
 
 #endif
