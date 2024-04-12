@@ -1,5 +1,5 @@
 #include "test/pipes.h"
-
+#include "../unit/unit.h"
 
 void close_pipes(t_cmd *current, int nb)
 {

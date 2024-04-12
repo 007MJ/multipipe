@@ -1,5 +1,6 @@
 #include "../../test/include.h"
 
+// use the lib str 
 int ft_strlen(char *s)
 {
     int i;

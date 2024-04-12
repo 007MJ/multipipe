@@ -1,4 +1,5 @@
 #include "test/pipes.h"
+#include "../unit/unit.h"
 
 void    wait_childs(pid_t *id, int nb_childs)
 {

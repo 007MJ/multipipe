@@ -48,5 +48,6 @@ char **addEnvp(char **envp, char **vars)
         i++;
         j++;
     }
+    free_str(envp);
     return (new);
 }

@@ -1,4 +1,5 @@
 #include "test/pipes.h"
+#include "../unit/unit.h"
 
 int _childs_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
 {
@@ -12,10 +13,11 @@ int _childs_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
     {
         last_fd ^= fd[0];
         fd[0] ^= last_fd;
-        last_fd ^= fd[0];
+        last_fd ^= fd[0];./
     }
     if (curr->index == shell->nb_cmds -1)
     {
+        // Don't change put in next pipe if there an > or >>
         close(fd[1]);
         fd[1] = 1;
     }
@@ -52,7 +54,7 @@ void _curren_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
         close(last_fd);
     }
 }
-
+// free id_childs
 int    commands(t_glob *shell, char **envp, char *envp_path)
 {
     t_cmd *curr;

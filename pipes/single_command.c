@@ -1,4 +1,5 @@
 #include "test/pipes.h"
+#include "../unit/unit.h"
 
 int    single_command(t_cmd *cmd, char **envp, char *envp_path)
 {

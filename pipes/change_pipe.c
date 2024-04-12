@@ -1,5 +1,5 @@
 #include "test/pipes.h"
-
+#include "../unit/unit.h"
 
 void    change_pipe(t_cmd *current)
 {

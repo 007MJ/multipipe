@@ -1,4 +1,5 @@
 #include "test/pipes.h"
+#include "../unit/unit.h"
 
 // int   run_command(char **envp, t_cmd **cmds)
 // {
@@ -46,7 +47,7 @@ int   run_commands(char **envp, t_glob *shell)
     t_cmd   *current;
     current = shell->cmds;
     envp_path = get_envp_path(envp);
-    if (shell->nb_cmds == 1)
+    if (shell->nb_cmds == 1 && shell->nb_pipes == 0)
     {
         printf("cmd->pipes\n");
         if (single_command(current, envp, envp_path) == -1)
