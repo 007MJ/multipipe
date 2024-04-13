@@ -6,7 +6,7 @@ CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 RM     = rm -fr
 
 
-SRCS    = main.c ../pipes/array_childs_ids.c ../pipes/change_pipe.c ../pipes/commands.c ../pipes/execute_command.c ../pipes/init_pipes.c ../pipes/path.c ../pipes/run_commands.c ../pipes/single_command.c ../pipes/wait_childs.c \
+SRCS    = main.c unit.c ../pipes/array_childs_ids.c ../pipes/change_pipe.c ../pipes/commands.c ../pipes/execute_command.c ../pipes/init_pipes.c ../pipes/path.c ../pipes/run_commands.c ../pipes/single_command.c ../pipes/wait_childs.c \
 		../files/manage_files/change_stdint.c ../files/manage_files/change_stdout.c ../files/manage_files/ft_append.c \
 		../builtins/function/ft_echo.c ../builtins/function/ft_export.c ../builtins/function/ft_unset.c \
 		../builtins/function/utils/addEnvp.c ../builtins/function/utils/ft_strlen_utils.c ../builtins/function/utils/printEnvp.c \

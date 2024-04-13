@@ -2,6 +2,7 @@
 
 int unit(t_glob *shell)
 {
-    (void)shell;
-    printf("in unit function\n");
+    if (run_commands(shell->envp, shell) == -1)
+        return (-1);
+    return (1);
 }
