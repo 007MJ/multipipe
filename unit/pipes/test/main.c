@@ -1,5 +1,4 @@
-#include "unit.h"
-#include <string.h>
+#include "pipes.h"
 
 void    printcmd(t_cmd *cmd)
 {
@@ -15,35 +14,7 @@ void    printcmd(t_cmd *cmd)
     printf("==========================================================================\n");
 }
 
-t_files    *file_append(t_files *files, char *name)
-{
-    t_files *new;
-    t_files *curr;
-    printf("1\n");
-    curr = files;;
-    new = malloc(sizeof(t_files));
-    new->name = malloc(sizeof(char *) * (ft_strlen(name) + 1));
-    new->next = NULL;
-    printf("2\n");
-    if (new->name)
-        strcpy(new->name, name);
-    else
-        return NULL;
-    printf("3 %s\n", new->name);
-    if (!curr)
-    {
-        files = new;
-        printf("4\n");
-        return files;
-    }
-    printf("5\n");
-    while (curr->next != NULL)
-        curr = curr->next;
-    curr->next = new;
-    return (files);
-}
-
-t_cmd   *fake(t_cmd *head,  char **av_cmd, int index, int nb_pipes)
+t_cmd   *fake(t_cmd *head, int **pipes, char **av_cmd, int index, int nb_pipes)
 {
     t_cmd *new;
     t_cmd *curr;
@@ -56,6 +27,7 @@ t_cmd   *fake(t_cmd *head,  char **av_cmd, int index, int nb_pipes)
     new->cmd_name = *av_cmd;
     new->index = index;
     new->nb_pipes = nb_pipes;
+    new->pipes = pipes;
     new->next = NULL;
     if (head == NULL)
     {
@@ -69,20 +41,34 @@ t_cmd   *fake(t_cmd *head,  char **av_cmd, int index, int nb_pipes)
     curr->next = new;
     return (head);
 }
-int main (int ac, char **av, char **envp)
+
+int main(int ac, char **av, char **envp)
 {
-    (void)ac;
     (void)av;
+    (void)ac;
+    (void)envp;
     t_glob *shell;
-    // t_files *files;
+    t_cmd   *current;
+    int     index;
+
+    index = 0;
+    current = NULL;
     shell = malloc(sizeof(t_glob));
     if (!shell)
         return (-1);
-    shell->nb_cmds = 1; 
-    shell->nb_pipes = 0;
-    shell->envp = envp;
-    shell->cmds = NULL;
+    shell->nb_cmds = 3;
+    shell->nb_pipes = 2;
+    // shell->pipes = init_pipes(shell->nb_pipes);
+
     char *one[] = {"ls", NULL};
-    shell->cmds = fake(shell->cmds, one, 0, shell->nb_pipes);
-    unit(shell);
+    char *two[] = {"wc", NULL};
+    char *three[] = {"wc", NULL};
+    shell->cmds = fake(current, shell->pipes, one, index, shell->nb_pipes);
+    shell->cmds->next = NULL;
+    index++;
+    shell->cmds = fake(shell->cmds, shell->pipes, two, index, shell->nb_pipes);
+    index++;
+    shell->cmds = fake(shell->cmds, shell->pipes, three, index, shell->nb_pipes);
+    // printcmd(shell->cmds);
+    run_commands(envp, shell);
 }

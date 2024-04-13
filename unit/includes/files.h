@@ -1,11 +1,8 @@
 #ifndef FILES_H
 #define FILES_H
 
-#include "unistd.h"
- #include <stdio.h>
-#include <fcntl.h>
-
-
+#include "global.h"
+typedef struct s_glob t_glob;
 
 typedef	struct	s_files 
 {

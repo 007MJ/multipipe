@@ -1,29 +1,8 @@
-#ifndef UNIT_H
-#define UNIT_H
+#ifndef PIPES_H
+#define PIPES_H
 
-#include <stdio.h>
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-
-typedef struct s_cmd t_cmd; 
-typedef struct s_files t_files; 
-
-typedef struct s_glob
-{
-	char    **envp;
-    char    *input;
-	int     **pipes;
-	int		nb_cmds;
-	int		nb_pipes;
-	int		_return;
-    int     on;
-
-	t_cmd	*cmds;
-    t_files *files;
-}t_glob;
+#include "global.h"
+typedef struct s_glob t_glob;
 
 // struc cmd
 /// @brief index : iteration in the node, id : for child , pipes : for each node has pipes, cmds: cmd for node, first_cmd: cmd berfore space, nd_piped : numbers of pipe in argv;
@@ -41,24 +20,6 @@ typedef struct  s_cmd {
 } t_cmd;
 
 
-typedef	struct	s_files 
-{
-	int		type;
-	char	*name;
-	char	*agrv;
-	struct	s_files *next;
-}t_files;
-
-
-// unit file ========================
-int unit(t_glob *shell);
-
-// files -> files ==============================
-int	ft_append(t_files *files);
-int	change_stdout(t_files *files);	
-int	change_stdint(t_files *files);
-
-// pipes -> files =============================================
 int     *array_child_ids(int nb_id);
 void    change_pipe(t_cmd *current);
 void    change_pipe(t_cmd *current);
@@ -93,9 +54,6 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 char    *ft_strdup(char *s);
 
-// buitins / function 
- int	ft_strlen_utils(char *s);
- char **addEnvp(char **envp, char **vars);
- void    printEnvp(char **envp);
+
 
 #endif

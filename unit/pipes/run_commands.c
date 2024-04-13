@@ -1,4 +1,4 @@
-#include "test/pipes.h"
+#include "../includes/global.h"
 
 // int   run_command(char **envp, t_cmd **cmds)
 // {

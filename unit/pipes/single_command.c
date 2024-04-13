@@ -1,4 +1,4 @@
-#include "test/pipes.h"
+#include "../includes/global.h"
 
 int    single_command(t_cmd *cmd, char **envp, char *envp_path)
 {

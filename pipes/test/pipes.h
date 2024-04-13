@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#include "../../files/test/files.h"
 
 typedef struct s_cmd t_cmd; 
 
@@ -20,6 +20,7 @@ typedef struct s_glob
     int     on;
 
 	t_cmd	*cmds;
+	t_files *files;
 }t_glob;
 
 // struc cmd
