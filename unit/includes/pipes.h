@@ -3,6 +3,7 @@
 
 #include "global.h"
 typedef struct s_glob t_glob;
+typedef struct s_files t_files;
 
 // struc cmd
 /// @brief index : iteration in the node, id : for child , pipes : for each node has pipes, cmds: cmd for node, first_cmd: cmd berfore space, nd_piped : numbers of pipe in argv;
@@ -12,11 +13,13 @@ typedef struct  s_cmd {
 	int		**pipes;
 	char	**av_cmd;
 	char	*cmd_name;
+	char	**envp;
 	int		index;
+	bool	is_vars;
 	int		nb_pipes;
-    
 	// should be a void next stuck
 	struct s_cmd *next;
+	t_files *files;
 } t_cmd;
 
 

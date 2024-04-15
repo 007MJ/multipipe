@@ -6,6 +6,15 @@
 
 
 // echo function
+
+typedef struct s_built
+{
+    char    *name;
+    char    **envp;
+    char    **arv;
+    bool    is_var;
+} t_built;
+
 void ft_echo(char **av, bool newline);
 
 //export funcrion 

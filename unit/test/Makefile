@@ -11,7 +11,7 @@ SRCS    = main.c ../pipes/array_childs_ids.c ../pipes/change_pipe.c ../pipes/com
 		../builtins/function/ft_echo.c ../builtins/function/ft_export.c ../builtins/function/ft_unset.c \
 		../builtins/function/utils/addEnvp.c ../builtins/function/utils/ft_strlen_utils.c ../builtins/function/utils/printEnvp.c \
 		../pipes/lib/append.c  ../pipes/lib/free_str.c ../pipes/lib/ft_bzero.c ../pipes/lib/ft_calloc.c ../pipes/lib/ft_memcpy.c ../pipes/lib/ft_memmove.c ../pipes/lib/ft_split.c ../pipes/lib/ft_strdup.c ../pipes/lib/ft_strjoin.c ../pipes/lib/ft_strlen.c ../pipes/lib/ft_strncmp.c ../pipes/lib/new_cmd.c \
-		../unit/unit.c ../unit/is_change_std.c
+		../unit/unit.c ../unit/is_change_std.c ../unit/which_cmd.c
 
 OBJS = $(SRCS:.c=.o)
 

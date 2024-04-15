@@ -14,10 +14,11 @@
 # define PIPE       1
 # define OUTPUT     2
 # define INPUT      3
-# define APPEND     4 
+# define APPEND     4
 # define DOLLAR     5
-# define HEREDOC    6 
+# define HEREDOC    6
 # define ARVG       7
+# define BUILT      8
 
 
 typedef struct s_glob
