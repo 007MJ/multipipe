@@ -1,9 +1,9 @@
 #include "../includes/global.h"
 
-int unit(t_glob *shell)
+int unit(t_cmd *cmds)
 {
     
-    if (run_commands(shell->envp, shell) == -1)
+    if (run_commands(cmds) == -1)
         return (-1);
     return (1);
 }

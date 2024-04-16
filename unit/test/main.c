@@ -70,22 +70,87 @@ t_cmd   *fake(t_cmd *head,  char **av_cmd, int index, int nb_pipes)
     curr->next = new;
     return (head);
 }
-int main (int ac, char **av, char **envp)
+// int main (int ac, char **av, char **envp)
+// {
+//     (void)ac;
+//     (void)av;
+//     t_cmds *cmds;
+//     t_files *files_var;
+//     cmds = malloc(sizeof(t_glob));
+//     if (!cmds)
+//         return (-1);
+//     cmds->nb_cmds = 1; 
+//     cmds->nb_pipes = 0;
+//     cmd->envp = envp;
+//     cmds->next = NULL
+//     files_var = NULL;
+//     char *one[] = {"ls", NULL};
+//     shell->files = file_append(files_var, "files.text", APPEND);
+//     shell->cmds = fake(shell->cmds, one, 0, shell->nb_pipes);
+//     unit(shell);
+// }
+
+/******************** one cmds ***********************/
+// int main (int ac, char **av, char **envp)
+// {   
+    // t_cmd *cmds;
+
+    // cmds = NULL;
+    // (void)envp;
+    // if (ac > 1)
+        // return (printf("no argment %s \n", *av), -1);
+    // else
+    // {
+        // cmds = malloc(sizeof(t_cmd));
+        // if (!cmds)
+        //     return (printf("cmds! did't malloc well !"), -1);
+        // char *av[] = {"ls", NULL};
+        // cmds->type = ARVG;
+        // cmds->envp = envp;
+        // cmds->nb_pipes = 0;
+        // cmds->nb_cmds = 1;
+        // cmds->index = 0;
+        // cmds->cmd_name = "ls";
+        // cmds->av_cmd = av;
+        // cmds->files = NULL;
+        /******************** test cmd with files ************************/
+        // cmds->files = file_append(cmds->files, "test.fr", APPEND);
+        /****************************************************************/
+//         cmds->next = NULL;
+//         unit(cmds);
+//     }
+// }
+
+/******************** mulit cmds ***********************/
+int main(int ac, char **av, char **envp)
 {
-    (void)ac;
     (void)av;
-    t_glob *shell;
-    t_files *files_var;
-    shell = malloc(sizeof(t_glob));
-    if (!shell)
+    (void)ac;
+    char *av0[] = {"ls", NULL};
+    char *av1[] = {"wc", NULL};
+
+    t_cmd *one = malloc(sizeof(t_cmd));
+    t_cmd *two = malloc(sizeof(t_cmd));
+    if (!one)
         return (-1);
-    shell->nb_cmds = 1; 
-    shell->nb_pipes = 0;
-    shell->envp = envp;
-    shell->cmds = NULL;
-    files_var = NULL;
-    char *one[] = {"ls", NULL};
-    shell->files = file_append(files_var, "files.text", APPEND);
-    shell->cmds = fake(shell->cmds, one, 0, shell->nb_pipes);
-    unit(shell);
+    one->av_cmd = av0;
+    one->cmd_name = "ls";
+    one->envp = envp;
+    one->nb_cmds = 2;
+    one->index = 0;
+    one->nb_pipes = 1;
+    one->files = NULL;
+    // printf("======================================\n");
+    one->next = two;
+    two->av_cmd = av1;
+    two->nb_cmds = 2;
+    two->cmd_name = "wc";
+    two->envp = envp;
+    two->index = 1;
+    two->nb_pipes = 1;
+    two->files = NULL;
+    two->next = NULL;
+    // printf("%d cmd pipe\n", one->nb_cmds - 1);
+    unit(one);
 }
+

@@ -1,6 +1,6 @@
 #include "../includes/global.h"
 
-int _childs_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
+int _childs_fd(int fd[], int last_fd, t_cmd *curr, t_cmd *cmds)
 {
     pipe(fd);
     if (curr->index == 0)
@@ -14,7 +14,7 @@ int _childs_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
         fd[0] ^= last_fd;
         last_fd ^= fd[0];
     }
-    if (curr->index == shell->nb_cmds -1)
+    if (curr->index == cmds->nb_cmds - 1)
     {
         // Don't change put in next pipe if there an > or >>
         close(fd[1]);
@@ -23,7 +23,7 @@ int _childs_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
     return (last_fd);
 }
 
-int expan_child(int fd[], t_cmd *curr, char **envp, char *envp_path)
+int expan_child(int fd[], t_cmd *curr, char *envp_path)
 {
     if (fd[0] != 0)
     {
@@ -35,16 +35,16 @@ int expan_child(int fd[], t_cmd *curr, char **envp, char *envp_path)
         dup2(fd[1], 1);
         close(fd[1]);
     }
-    if (execute_command(curr, envp, envp_path) == -1)
+    if (execute_command(curr, curr->envp, envp_path) == -1)
         return (-1);
     return (1);
 }
 
-void _curren_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
+void _curren_fd(int fd[], int last_fd, t_cmd *cmds)
 {
-    if (curr->index != 0)
+    if (cmds->index != 0)
         close(fd[0]);
-    if (curr->index != shell->nb_cmds -1)
+    if (cmds->index != cmds->nb_cmds -1)
     {
         close(fd[1]);
     }
@@ -54,31 +54,32 @@ void _curren_fd(int fd[], int last_fd, t_cmd *curr, t_glob *shell)
     }
 }
 // free id_childs
-int    commands(t_glob *shell, char **envp, char *envp_path)
+int    commands(t_cmd *cmds, char *envp_path)
 {
     t_cmd *curr;
-    pid_t *id_childs;
+    // pid_t *id_childs;
     int fd[2];
     int last_fd;
     
-    id_childs = malloc(sizeof(pid_t) * shell->nb_cmds);
-    curr = shell->cmds;
+    // id_childs = malloc(sizeof(pid_t) * cmds->nb_cmds);
+    curr = cmds;
     while (curr != NULL)
     {
-        last_fd = _childs_fd(fd, last_fd, curr, shell);
-        *id_childs = fork();
-        if (*id_childs == 0)
+        last_fd = _childs_fd(fd, last_fd, curr, cmds);
+        curr->id = fork();
+        if (curr->id == 0)
         {
-            if (expan_child(fd, curr, envp, envp_path) == -1)
+            // printf("the childs make it !!\n");
+            if (expan_child(fd, curr, envp_path) == -1)
                 return (-1);
         }
-        else if (*id_childs < 0)
+        else if (curr->id < 0)
             printf("Error fork()\n");
         else
         {
-            _curren_fd(fd, last_fd, curr, shell);
+            _curren_fd(fd, last_fd, curr);
             curr = curr->next;
         } 
     }
-    return ( wait_childs(id_childs, shell->nb_cmds), 1);
+    return (wait_childs(cmds), 1);
 }

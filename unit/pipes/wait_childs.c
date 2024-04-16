@@ -1,14 +1,19 @@
 #include "../includes/global.h"
 
-void    wait_childs(pid_t *id, int nb_childs)
+void    wait_childs(t_cmd *cmds)
 {
-    int i;
-
-    i = 0;
-    while (i < nb_childs)
+    t_cmd *curr;
+    curr = NULL;
+    if (cmds)
     {
-        // printf("is working .. .. .. %d\n", nb_childs);
-        waitpid(id[i], NULL, 0);
-        i++;
+        if (cmds->nb_pipes > 0)
+        {
+            curr = cmds;
+            while (curr != NULL)
+            {
+                waitpid(curr->id, NULL, 0);
+                curr = curr->next;
+            }
+        }
     }
 }

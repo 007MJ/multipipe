@@ -7,14 +7,16 @@ void call_built(t_cmd *current)
 
 void    which_cmd(t_cmd *current)
 {
-    if (current->type == BUILT)
-    {
-        // we make de commande and we look at the > redirection
-        // exit();
-    }
+    if (current->files)
+        is_change_std(current->files);
     if (current->type == HEREDOC)
     {
         // we make de les here and we look at the > redirection
+        // exit();
+    }
+    if (current->type == BUILT)
+    {
+        // we make de commande and we look at the > redirection
         // exit();
     }
 }

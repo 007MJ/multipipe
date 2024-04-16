@@ -9,14 +9,15 @@ typedef struct s_files t_files;
 /// @brief index : iteration in the node, id : for child , pipes : for each node has pipes, cmds: cmd for node, first_cmd: cmd berfore space, nd_piped : numbers of pipe in argv;
 typedef struct  s_cmd {
 	int		type;
-	pid_t	*id;
+	pid_t	id;
 	int		**pipes;
 	char	**av_cmd;
 	char	*cmd_name;
 	char	**envp;
 	int		index;
 	bool	is_vars;
-	int		nb_pipes;
+	int		nb_cmds;
+	int 	nb_pipes;
 	// should be a void next stuck
 	struct s_cmd *next;
 	t_files *files;
@@ -25,15 +26,12 @@ typedef struct  s_cmd {
 
 int     *array_child_ids(int nb_id);
 void    change_pipe(t_cmd *current);
-void    change_pipe(t_cmd *current);
-void    change_pipe(t_cmd *current);
-void    change_pipe(t_cmd *current);
 void    close_pipes(t_cmd *current, int nb);
 int     execute_command(t_cmd *current, char **envp, char *envp_path);
 int     **init_pipes(int nb);
 char    *get_cmd_path(char *path, char *cmd);
-int     run_commands(char **envp, t_glob *shell_kai);
-void    wait_childs(pid_t *id, int nb_childs);
+int     run_commands(t_cmd *cmds);
+void    wait_childs(t_cmd *cmds);
 char    *get_cmd_path(char *path, char *cmd);
 char    *get_envp_path(char **envp);
 
@@ -41,7 +39,7 @@ char    *get_envp_path(char **envp);
 int    single_command(t_cmd *cmd, char **envp, char *envp_path);
 
 // commands 
-int    commands(t_glob *shell, char **envp, char *envp_path);
+int    commands(t_cmd *cmds, char *envp_path);
 
 
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -56,7 +54,6 @@ void	append(t_cmd **head, t_cmd *cmd);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 char    *ft_strdup(char *s);
-
 
 
 #endif

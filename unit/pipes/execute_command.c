@@ -6,7 +6,7 @@ int execute_command(t_cmd *current, char **envp, char *envp_path)
 
     if (!current)
         return (printf("current is NULL"), -1);
-    // which_cmd(current);
+    which_cmd(current);
     cmd_path = get_cmd_path(envp_path, current->cmd_name);
     if(!cmd_path)
         return (exit(EXIT_FAILURE), 0);

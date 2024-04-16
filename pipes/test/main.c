@@ -56,19 +56,19 @@ int main(int ac, char **av, char **envp)
     shell = malloc(sizeof(t_glob));
     if (!shell)
         return (-1);
-    shell->nb_cmds = 3;
-    shell->nb_pipes = 2;
+    shell->nb_cmds = 2;
+    shell->nb_pipes = 1;
     // shell->pipes = init_pipes(shell->nb_pipes);
 
     char *one[] = {"ls", NULL};
     char *two[] = {"wc", NULL};
-    char *three[] = {"wc", NULL};
+    // char *three[] = {"wc", NULL};
     shell->cmds = fake(current, shell->pipes, one, index, shell->nb_pipes);
     shell->cmds->next = NULL;
     index++;
     shell->cmds = fake(shell->cmds, shell->pipes, two, index, shell->nb_pipes);
-    index++;
-    shell->cmds = fake(shell->cmds, shell->pipes, three, index, shell->nb_pipes);
+    // index++;
+    // shell->cmds = fake(shell->cmds, shell->pipes, three, index, shell->nb_pipes);
     // printcmd(shell->cmds);
     run_commands(envp, shell);
 }

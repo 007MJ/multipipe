@@ -35,24 +35,25 @@
 // }
 
 
-int   run_commands(char **envp, t_glob *shell)
+int   run_commands(t_cmd *cmds)
 {
     int     i;
     char	*envp_path;
 
     i = 0;
-    if (!shell->cmds)
+    if (!cmds)
         return (-1);
-    t_cmd   *current;
-    current = shell->cmds;
-    envp_path = get_envp_path(envp);
-    if (shell->nb_cmds == 1 && shell->nb_pipes == 0)
+    envp_path = get_envp_path(cmds->envp);
+    if (cmds->nb_cmds == 1 && cmds->nb_pipes == 0)
     {
-        // printf("cmd->pipes\n");
-        if (single_command(current, envp, envp_path) == -1)
+        printf("printf nb pipes %d\n", cmds->nb_pipes);
+        if (single_command(cmds, cmds->envp, envp_path) == -1)
             return (-1);
     }
     else
-        commands(shell, envp, envp_path);
+    {
+        // printf("more than one command\n");
+        commands(cmds, envp_path);
+    }
     return (1);
 }
