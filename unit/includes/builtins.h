@@ -24,5 +24,8 @@ void ft_export(char **envp, char **argv, bool);
 void printEnvp(char **envp);
 char **addEnvp(char **envp, char **argv);
 int ft_strlen_utils(char *);
+int same_varibale(char **envp, char *var);
+int same_var_value(char **envp, char *var);
+int is_add(char **envp, char *var, int kv);
 
 #endif

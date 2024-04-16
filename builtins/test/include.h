@@ -10,11 +10,11 @@
 void ft_echo(char **av, bool newline);
 
 //export funcrion 
-void ft_export(char **envp, char **argv, bool);
+void ft_export(char **envp, char **argv, bool print);
 
 // utils function 
 void printEnvp(char **envp);
 char **addEnvp(char **envp, char **argv);
-int ft_strlen_utils(char *);
+int ft_strlen(char *);
 
 #endif

@@ -21,19 +21,31 @@ void free_str_envp(char **str)
         i++;
     }
 }
-char **addEnvp(char **envp, char **vars)
+
+int ft_strchr(char *s, char c)
 {
-    char    **new;
+    int i;
+
+    i = 0;
+    while (s[i] != '\0')
+    {
+        if (s[i] == c)
+            return (1);
+        i++;
+    }
+    return (0);
+}
+char **new_envp(char **envp, char **vars)
+{
+     char    **new;
     int     len;
     int     len2;
     int     i;
-    int     j;
 
     i = 0;
-    j = 0;
     len = size(envp);
     len2 = size(vars);
-    new = malloc(sizeof(char **) * (len + len + 1));
+    new = malloc(sizeof(char **) * (len + len2 + 1));
     if (!new)
         return (NULL);
     new[len + len2] = NULL;
@@ -42,12 +54,25 @@ char **addEnvp(char **envp, char **vars)
         new[i] = envp[i];
         i++;
     }
-    while (j < len2)
+    return (new);
+}
+char **addEnvp(char **envp, char **vars)
+{
+    int     i;
+    int     j;
+    int     is;
+    char    **new;
+
+    i = size(envp);
+    j = 0;
+    new = new_envp(envp, vars);
+    while (j < size(vars))
     {
-        new[i] = vars[j];
+        is = is_add(new, vars[j], ft_strchr(vars[j], '='));
+        if (is == 0)
+            new[i] = vars[j];
         i++;
         j++;
     }
-    free_str_envp(envp);
     return (new);
 }

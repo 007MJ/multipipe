@@ -34,3 +34,10 @@ int main(int ac, char **av, char **envp)
     }
 }
 */
+
+int main (int ac, char **av, char **envp)
+{
+    char *one[] = {"hello", "hello", NULL};
+    ft_export(envp, one, false);
+    // printf("Hello World \n");
+}
