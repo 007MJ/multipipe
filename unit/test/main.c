@@ -139,7 +139,8 @@ int main(int ac, char **av, char **envp)
     one->nb_cmds = 2;
     one->index = 0;
     one->nb_pipes = 1;
-    one->files = NULL;
+    one->files = NULL; 
+    one->files = file_append(one->files, "test.fr", APPEND);;
     // printf("======================================\n");
     one->next = two;
     two->av_cmd = av1;
@@ -153,4 +154,3 @@ int main(int ac, char **av, char **envp)
     // printf("%d cmd pipe\n", one->nb_cmds - 1);
     unit(one);
 }
-

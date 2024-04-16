@@ -32,7 +32,8 @@ int expan_child(int fd[], t_cmd *curr, char *envp_path)
     }
     if (fd[1] != 1)
     {
-        dup2(fd[1], 1);
+        if (!curr->files)
+            dup2(fd[1], 1);
         close(fd[1]);
     }
     if (execute_command(curr, curr->envp, envp_path) == -1)
@@ -45,16 +46,12 @@ void _curren_fd(int fd[], int last_fd, t_cmd *cmds)
     if (cmds->index != 0)
         close(fd[0]);
     if (cmds->index != cmds->nb_cmds -1)
-    {
         close(fd[1]);
-    }
     else 
-    {
         close(last_fd);
-    }
 }
 // free id_childs
-int    commands(t_cmd *cmds, char *envp_path)
+int      commands(t_cmd *cmds, char *envp_path)
 {
     t_cmd *curr;
     // pid_t *id_childs;
