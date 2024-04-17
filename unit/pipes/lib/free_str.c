@@ -13,6 +13,6 @@ void	free_str(char **str)
 			free(str[i]);
 			i++;
 		}
+		free(str);
 	}
-	free(str);
 }

@@ -160,6 +160,6 @@ t_cmd   *fake(t_cmd *head,  char **av_cmd, int index, int nb_pipes)
 int main (int ac, char **av, char **envp)
 {
     (void)ac, (void)av;
-    char *one[] ={"LOGN=", NULL};
+    char *one[] = {"LOGNAME=", "hello", "hello", "bankai", NULL};
     ft_export(envp, one , false);
 }

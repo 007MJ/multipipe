@@ -21,12 +21,26 @@ char *ft_cpyvar(char *s)
     return (c);
 }
 
-int same_var_value(char **envp, char *var)
+int index_vars_is(char **envp, char *var)
 {
     int i;
-
+    
     i = 0;
-    if (same_varibale(envp, ft_cpyvar(var)) == 1)
-        return (1);
-    return (0);
+    while (envp[i] != NULL)
+    {
+        if (is_same(envp[i], var) == true)
+            return (i);
+        i++;
+    }
+    return (-1);
+}
+
+int same_var_value(char **envp, char *var)
+{
+    int index;
+
+    index = index_vars_is(envp, ft_cpyvar(var));
+    if (index == -1)
+        return (-1);
+    return (index);
 }

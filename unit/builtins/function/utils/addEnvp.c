@@ -1,15 +1,5 @@
 #include "../../../includes/global.h"
 
-int size(char **env)
-{
-    int i;
-
-    i = 0;
-    if (env)
-        while (env[i] != NULL)
-            i++;
-    return (i);
-}
 void free_str_envp(char **str)
 {
     int i;
@@ -20,6 +10,7 @@ void free_str_envp(char **str)
         free(str[i]);
         i++;
     }
+    free(str);
 }
 
 int ft_strchr(char *s, char c)
@@ -35,44 +26,41 @@ int ft_strchr(char *s, char c)
     }
     return (0);
 }
-char **new_envp(char **envp, char **vars)
+char *is_same_key_value(char **envp, char *s, int index)
 {
-     char    **new;
-    int     len;
-    int     len2;
-    int     i;
+    char *new_str;
 
-    i = 0;
-    len = size(envp);
-    len2 = size(vars);
-    new = malloc(sizeof(char **) * (len + len2 + 1));
-    if (!new)
-        return (NULL);
-    new[len + len2] = NULL;
-    while ( i < len)
-    {
-        new[i] = envp[i];
-        i++;
-    }
-    return (new);
+    new_str = NULL;
+    if (index == -1)
+        return (s);
+    if (ft_strncmp((const char *)envp[index], (const char *)s, ft_strlen((const char *)envp[index])) == 0)
+        return (new_str);
+    else
+        new_str = ft_strdup(s);
+    return (new_str);
 }
 char **addEnvp(char **envp, char **vars)
 {
-    int     i;
-    int     j;
-    int     is;
-    char    **new;
+    int i;
+    int index;
+    char **new;
 
-    i = size(envp);
-    j = 0;
-    new = new_envp(envp, vars);
-    while (j < size(vars))
+    new = NULL;
+    i = 0;
+    while (vars[i] != NULL)
     {
-        is = is_add(new, vars[j], ft_strchr(vars[j], '='));
-        if (is == 0)
-            new[i] = vars[j];
+        if (ft_strchr(vars[i], '=') == 1)
+        {
+            index = same_var_value(envp, vars[i]);
+            vars[i] = is_same_key_value(envp, vars[i], index);
+            new = new_envp(envp, new, vars[i], index);
+        }
+        else
+        {
+            index = same_varibale(envp, vars[i]);
+            new = new_envp(envp, new, vars[i], index);
+        }
         i++;
-        j++;
     }
     return (new);
 }
