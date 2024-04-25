@@ -132,28 +132,28 @@ t_cmd   *fake(t_cmd *head,  char **av_cmd, int index, int nb_pipes)
 //     t_cmd *one = malloc(sizeof(t_cmd));
 //     t_cmd *two = malloc(sizeof(t_cmd));
 //     if (!one)
-    //     return (-1);
-    // one->av_cmd = av0;
-    // one->cmd_name = "ls";
-    // one->envp = envp;
-    // one->nb_cmds = 2;
-    // one->index = 0;
-    // one->nb_pipes = 1;
-    // one->files = NULL;
+//         return (-1);
+//     one->av_cmd = av0;
+//     one->cmd_name = "ls";
+//     one->envp = envp;
+//     one->nb_cmds = 2;
+//     one->index = 0;
+//     one->nb_pipes = 1;
+//     one->files = NULL;
     /******************* test with a files ********************/ 
     //one->files = file_append(one->files, "test.fr", APPEND);;
     /*******************************************************/ 
-    // one->next = two;
-    // two->av_cmd = av1;
-    // two->nb_cmds = 2;
-    // two->cmd_name = "wc";
-    // two->envp = envp;
-    // two->index = 1;
-    // two->nb_pipes = 1;
-    // two->files = NULL;
-    // two->next = NULL;
-    // printf("%d cmd pipe\n", one->nb_cmds - 1);
-    // unit(one);
+//     one->next = two;
+//     two->av_cmd = av1;
+//     two->nb_cmds = 2;
+//     two->cmd_name = "wc";
+//     two->envp = envp;
+//     two->index = 1;
+//     two->nb_pipes = 1;
+//     two->files = NULL;
+//     two->next = NULL;
+//     printf("%d cmd pipe\n", one->nb_cmds - 1);
+//     unit(one);
 // }
 
 
